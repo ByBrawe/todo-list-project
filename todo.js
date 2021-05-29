@@ -143,8 +143,7 @@ function addTodo(e){
 
     const newToDo = todoInput.value.trim();
     const todos = getTodosFromStorage();
-    var x = 0;
-    // console.log(e); 
+
 
     if(newToDo == ""){
 
@@ -152,28 +151,21 @@ function addTodo(e){
 
     }else{
 
-        todos.forEach((todo)=>{
 
-            if (todo == newToDo){
-                x = 1;
-                todoInput.value = "";
-                showAlert("danger","Böyle bir todo zaten var.");
-                
-            }
+        if(todos.indexOf(newToDo) >= 0){
 
-            
+            todoInput.value = "";
+            showAlert("danger","Böyle bir todo zaten var.");
 
-        });
-        // todo konrol
-        if(x !=1){
+
+        }else{
 
             addTodoUI(newToDo);
             addTodoToStorage(newToDo);
             showAlert("success","Todo'nuz başarıyla eklendi.");
+            
 
         }
-
-        
 
     }
    
